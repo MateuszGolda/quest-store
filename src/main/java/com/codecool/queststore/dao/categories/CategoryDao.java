@@ -12,6 +12,14 @@ import java.util.List;
 
 public class CategoryDao extends PostgreSqlJDBC implements Dao<Category> {
 
+    public CategoryDao(String url, String user, String password) {
+        super(url, user, password);
+    }
+
+    public CategoryDao() {
+        super();
+    }
+
     @Override
     public List<Category> get(String condition) {
         List<Category> categories = new ArrayList<>();

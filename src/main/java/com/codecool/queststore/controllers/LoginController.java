@@ -14,8 +14,18 @@ import java.util.Map;
 import java.util.Optional;
 
 public class LoginController extends Controller implements HttpHandler {
-    private final LoginService loginService = new LoginService();
-    private final LoginView view = new LoginView();
+    private final LoginService loginService;
+    private final LoginView view;
+
+    public LoginController() {
+        loginService = new LoginService();
+        view = new LoginView();
+    }
+
+    public LoginController(LoginService loginService, LoginView view) {
+        this.loginService = loginService;
+        this.view = view;
+    }
 
     void handleGet(HttpExchange httpExchange) throws IOException {
         Optional<User> loggedUser = getUserFromCookie(httpExchange);
@@ -37,6 +47,10 @@ public class LoginController extends Controller implements HttpHandler {
         return UserRoleType.getById(id).toString().toLowerCase();
     }
 
+    public String accessGetUsersRole(User user){
+        return getUsersRole(user);
+    }
+
     private Optional<User> getUserFromCookie(HttpExchange httpExchange) {
         User user = null;
         Optional<HttpCookie> cookie = CookieHelper.getSessionIdCookie(httpExchange);
@@ -47,6 +61,10 @@ public class LoginController extends Controller implements HttpHandler {
             user = loginService.getLoggedUserBySessionId(sessionId).orElse(null);
         }
         return Optional.ofNullable(user);
+    }
+
+    public  Optional<User> accessGetUserFromCookie(HttpExchange httpExchange){
+        return getUserFromCookie(httpExchange);
     }
 
     void handlePost(HttpExchange httpExchange) throws IOException {

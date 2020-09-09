@@ -11,6 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoleDao extends PostgreSqlJDBC implements Dao<Role> {
+
+    public RoleDao(String url, String user, String password) {
+        super(url, user, password);
+    }
+
+    public RoleDao() {
+        super();
+    }
+
     @Override
     public List<Role> get(String condition) {
         List<Role> roles = new ArrayList<>();

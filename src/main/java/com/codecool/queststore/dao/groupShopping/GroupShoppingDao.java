@@ -12,6 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupShoppingDao extends PostgreSqlJDBC implements Dao<GroupShopping> {
+
+    public GroupShoppingDao(String url, String user, String password) {
+        super(url, user, password);
+    }
+
+    public GroupShoppingDao() {
+        super();
+    }
+
     @Override
     public List<GroupShopping> get(String condition) {
         List<GroupShopping> groupShopping = new ArrayList<>();

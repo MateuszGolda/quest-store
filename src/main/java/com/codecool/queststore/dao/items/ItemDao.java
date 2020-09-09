@@ -12,6 +12,14 @@ import java.util.List;
 
 public class ItemDao extends PostgreSqlJDBC implements Dao<Item> {
 
+    public ItemDao(String url, String user, String password) {
+        super(url, user, password);
+    }
+
+    public ItemDao() {
+        super();
+    }
+
     @Override
     public List<Item> get(String condition) {
         List<Item> items = new ArrayList<>();

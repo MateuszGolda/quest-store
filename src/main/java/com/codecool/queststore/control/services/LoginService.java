@@ -16,8 +16,19 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class LoginService {
     private final int sessionDurationMinutes = 10;
-    private final Dao<Session> sessionDao = new SessionDao();
-    private final Dao<User> userDao = new UserDao();
+    private final Dao<Session> sessionDao ;
+    private final Dao<User> userDao ;
+
+    public LoginService(){
+        this.sessionDao = new SessionDao();
+        this.userDao = new UserDao();
+    }
+
+    public LoginService(Dao<Session> sessionDao , Dao<User> userDao){
+        this.sessionDao = sessionDao;
+        this.userDao = userDao;
+    }
+
 
     public Optional<Map.Entry<String, User>> login(String email, String password) {
         if (!isUserAndPasswordValid(email, password)) {

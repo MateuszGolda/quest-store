@@ -12,6 +12,14 @@ import java.util.List;
 
 public class BalanceDao extends PostgreSqlJDBC implements Dao<Balance> {
 
+    public BalanceDao(String url, String user, String password) {
+        super(url, user, password);
+    }
+
+    public BalanceDao() {
+        super();
+    }
+
     @Override
     public List<Balance> get(String condition) {
         List<Balance> balances = new ArrayList<>();

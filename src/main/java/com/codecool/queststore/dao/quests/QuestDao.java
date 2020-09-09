@@ -11,6 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestDao extends PostgreSqlJDBC implements Dao<Quest> {
+    public QuestDao(String url, String user, String password) {
+        super(url, user, password);
+    }
+
+    public QuestDao() {
+        super();
+    }
 
     @Override
     public List<Quest> get(String condition) {

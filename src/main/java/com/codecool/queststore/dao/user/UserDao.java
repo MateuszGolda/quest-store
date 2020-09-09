@@ -11,6 +11,14 @@ import java.util.List;
 
 public class UserDao extends PostgreSqlJDBC implements Dao<User> {
 
+    public UserDao() {
+        super();
+    }
+
+    public UserDao(String url, String user, String password) {
+        super(url, user, password);
+    }
+
     @Override
     public List<User> get(String condition) {
         String query = String.format("SELECT * FROM users WHERE %s;", condition);

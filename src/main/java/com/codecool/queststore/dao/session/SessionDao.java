@@ -8,6 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SessionDao extends PostgreSqlJDBC implements Dao<Session> {
+    public SessionDao(String url, String user, String password) {
+        super(url, user, password);
+    }
+
+    public SessionDao() {
+    }
+
     @Override
     public List<Session> get(String condition) {
         List<Session> sessions = new ArrayList<>();

@@ -13,6 +13,14 @@ import java.util.List;
 
 public class StudentShoppingDao extends PostgreSqlJDBC implements Dao<StudentShopping> {
 
+    public StudentShoppingDao(String url, String user, String password) {
+        super(url, user, password);
+    }
+
+    public StudentShoppingDao() {
+        super();
+    }
+
     @Override
     public List<StudentShopping> get(String condition) {
         List<StudentShopping> studentsShopping = new ArrayList<>();

@@ -17,9 +17,21 @@ import java.util.Optional;
 
 public class AdminController implements HttpHandler {
 
-    private final LoginService loginService = new LoginService();
-    private final AdminView adminView = new AdminView();
-    private final UserService userService = new UserService();
+    private final LoginService loginService;
+    private final AdminView adminView;
+    private final UserService userService;
+
+    public AdminController(){
+        loginService = new LoginService();
+        adminView = new AdminView();
+        userService = new UserService();
+    }
+
+    public AdminController(LoginService loginService, AdminView adminView, UserService userService){
+        this.loginService = loginService;
+        this.adminView = adminView;
+        this.userService = userService;
+    }
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {

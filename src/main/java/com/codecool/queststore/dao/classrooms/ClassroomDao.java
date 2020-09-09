@@ -12,6 +12,14 @@ import java.util.List;
 
 public class ClassroomDao extends PostgreSqlJDBC implements Dao<Classroom> {
 
+    public ClassroomDao(String url, String user, String password) {
+        super(url, user, password);
+    }
+
+    public ClassroomDao() {
+        super();
+    }
+
     @Override
     public List<Classroom> get(String condition) {
         List<Classroom> classrooms = new ArrayList<>();

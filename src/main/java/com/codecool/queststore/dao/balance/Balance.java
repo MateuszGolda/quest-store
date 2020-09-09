@@ -34,4 +34,13 @@ public class Balance {
     public int getTotalEarned() {
         return totalEarned;
     }
+
+    @Override
+    public String toString() {
+        return "Balance{" +
+                "userId=" + userId +
+                ", amount=" + amount +
+                ", totalEarned=" + totalEarned +
+                '}';
+    }
 }
